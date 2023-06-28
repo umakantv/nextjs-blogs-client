@@ -1,6 +1,5 @@
 import Container from "./container";
 import HeroPost from "./hero-post";
-import Intro from "./intro";
 import MoreStories from "./more-stories";
 
 export default function PostsContainer({ allPosts }) {
@@ -9,7 +8,7 @@ export default function PostsContainer({ allPosts }) {
     const morePosts = allPosts.slice(1);
 
     return <Container>
-        {HeroPost && (
+        {heroPost && (
           <HeroPost
             title={heroPost.title}
             coverImage={heroPost?.featuredImage}

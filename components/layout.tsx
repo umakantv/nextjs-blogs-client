@@ -2,15 +2,15 @@ import Footer from './footer'
 import Meta from './meta'
 
 type Metadata = {
-  description: string | undefined,
-  tags: string[] | undefined;
-  author: string | undefined;
-  title: string;
-  ogImage: string | undefined;
+  description?: string | undefined,
+  tags?: string[] | undefined;
+  author?: string | undefined;
+  title?: string;
+  ogImage?: string | undefined;
 }
 
 export default function Layout({ children, meta }: {
-  meta: Metadata | undefined,
+  meta?: Metadata | undefined,
   children: any
 }) {
   return (

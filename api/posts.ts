@@ -1,33 +1,46 @@
-import axios from "./apiTransport";
+import api from "./apiTransport";
+
+type FetchPostParams = {
+    authorId?: string | undefined;
+    search?: string | undefined;
+    tag?: string | undefined;
+    page?: number | undefined;
+    pageSize?: number | undefined;
+    sortBy?: string | undefined;
+    sortOrder?: string | undefined
+}
 
 export async function getPosts(
-    {page = 1, pageSize = 15, search = '', tag = '', sortBy = 'createdAt', sortOrder = 'desc'}) {
+    params: FetchPostParams) {
 
-    if (!search) {
-        search = undefined
-    }
+    let {
+        authorId,
+        search,
+        tag,
+        page = 1,
+        pageSize = 15,
+        sortBy = 'createdAt',
+        sortOrder = 'desc'
+    } = params;
 
-    if (!tag) {
-        tag = undefined
-    }
-
-    return axios.get('/posts', {
+    return api.get('/posts', {
         params: {
-            page, pageSize, search, tag, sortBy, sortOrder
+            authorId, search, tag,
+            page, pageSize, sortBy, sortOrder,
         }
     })
 }
 
 export async function addPost(title: string, content: string) {
-    return axios.post('/posts', {
+    return api.post('/posts', {
         title, content
     })
 }
 
 export async function getPostById(id: string) {
-    return axios.get(`/posts/${id}`)
+    return api.get(`/posts/${id}`)
 }
 
 export async function getPostsByTag(tag: string) {
-    return axios.get(`/posts/tag/${tag}`)
+    return api.get(`/posts/tag/${tag}`)
 }

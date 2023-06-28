@@ -25,7 +25,7 @@ export default function Post({ post, comments = [], posts, error }) {
       author: post?.author.name,
       description: post?.excerpt,
       tags: post?.tags,
-      title: post?.title,
+      title: `${post?.title} - ${post?.author.name}`,
       ogImage: post?.metadata?.ogImage
     }}>
       <Container>
@@ -80,15 +80,11 @@ export const getStaticProps: GetStaticProps = async ({
     };
   } catch(err) {
 
-    console.error(err.response?.status, err)
-    const status = err.response?.status || 500;
-    const message = err.response?.data.message || 'Something went wrong';
-
     return {
       props: {
         error: {
-          status,
-          message,
+          status: err.status,
+          message: err.message,
         }
       },
       revalidate: 10
@@ -97,7 +93,6 @@ export const getStaticProps: GetStaticProps = async ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // const allPosts = await getAllPostsWithSlug()
 
   return {
     paths: [],

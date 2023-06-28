@@ -1,11 +1,11 @@
-import axios from "./apiTransport";
+import api from "./apiTransport";
 
 export async function getCommentsByPostId(id: string) {
-  return axios.get(`/comments/blog/${id}`);
+  return api.get(`/comments/blog/${id}`);
 }
 
 export async function addComment(content: string, postId: string) {
-  return axios.post(`/comments/${postId}`, {
+  return api.post(`/comments/${postId}`, {
     comment: content,
   });
 }

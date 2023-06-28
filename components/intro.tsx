@@ -6,7 +6,6 @@ export default function Intro({title = 'Blog.'}) {
       <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8">
         {title}
       </h1>
-      <SectionSeparator />
     </section>
   );
 }
