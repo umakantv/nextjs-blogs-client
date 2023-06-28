@@ -1,5 +1,4 @@
 import Container from './container'
-import { EXAMPLE_PATH } from '../lib/constants'
 
 export default function Footer() {
   return (
@@ -17,7 +16,7 @@ export default function Footer() {
               Reach out to me
             </a>
             <a
-              href={`https://github.com/vercel/next.js/tree/canary/examples/${EXAMPLE_PATH}`}
+              href={`https://github.com/umakantv/nextjs-blogs-client`}
               className="mx-3 font-bold hover:underline"
             >
               View on GitHub
