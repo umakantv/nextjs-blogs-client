@@ -1,15 +1,15 @@
-import Avatar from './avatar'
-import Date from './date'
-import CoverImage from './cover-image'
-import PostTitle from './post-title'
-import Categories from './categories'
+import Avatar from "./avatar";
+import Date from "./date";
+import CoverImage from "./cover-image";
+import PostTitle from "./post-title";
+import Tags from "./tags";
 
 export default function PostHeader({
   title,
   coverImage,
   date,
   author,
-  categories,
+  tags,
 }) {
   return (
     <>
@@ -26,9 +26,9 @@ export default function PostHeader({
         </div>
         <div className="mb-6 text-lg">
           Posted <Date dateString={date} />
-          <Categories categories={categories} />
+          {tags.length > 0 && <Tags tags={tags} />}
         </div>
       </div>
     </>
-  )
+  );
 }

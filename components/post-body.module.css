@@ -1,5 +1,6 @@
 .content {
   @apply text-lg leading-relaxed;
+  white-space: pre-wrap;
 }
 
 .content p,
