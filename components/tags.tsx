@@ -14,8 +14,8 @@ export default function Tags({ tags }) {
       <p className="mt-8 text-lg font-bold">
         Tagged
         {tags.map((tag: string, index: number) => (
-          <Link href={`/tags/${tag}`} className="ml-4 font-normal">
-            <span key={index} style={{color: colors[index]}}>
+          <Link key={index} href={`/tags/${tag}`} className="ml-4 font-normal">
+            <span style={{color: colors[index]}}>
               # {tag}
             </span>
           </Link>

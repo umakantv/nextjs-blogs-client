@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Container from "../../components/container";
 import PostBody from "../../components/post-body";
@@ -22,7 +21,13 @@ export default function Post({ post, comments = [], posts, error }) {
   }
 
   return (
-    <Layout>
+    <Layout meta={{
+      author: post?.author.name,
+      description: post?.excerpt,
+      tags: post?.tags,
+      title: post?.title,
+      ogImage: post?.metadata?.ogImage
+    }}>
       <Container>
         <Header />
         {router.isFallback ? (
@@ -30,15 +35,6 @@ export default function Post({ post, comments = [], posts, error }) {
         ) : (
           <>
             <article>
-              <Head>
-                <title>
-                  {post.title}
-                </title>
-                <meta
-                  property="og:image"
-                  content={post.metadata?.coverImage}
-                />
-              </Head>
               <PostHeader
                 title={post.title}
                 coverImage={post.metadata?.coverImage}

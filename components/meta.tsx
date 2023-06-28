@@ -1,7 +1,23 @@
 import Head from 'next/head'
-import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
+import { useRouter } from 'next/router';
+import config from '../config';
 
-export default function Meta() {
+export default function Meta({meta}: {meta: any}) {
+  const router = useRouter();
+  let {
+    description = "A statically generated blog example using Next.js and Node.js Backend.",
+    tags = ['nextjs', 'nodejs', 'mern-stack'],
+    author = "Umakant Vashishta",
+    title = "Home 🏡",
+    ogImage = config.HOME_OG_IMAGE_URL,
+  } = meta || {};
+
+  let keywords = tags.join(", ");
+  let route = router.asPath;
+
+  let url = config.HOME_PAGE + route;
+
+
   return (
     <Head>
       <link
@@ -28,15 +44,20 @@ export default function Meta() {
         color="#000000"
       />
       <link rel="shortcut icon" href="/favicon/favicon.ico" />
+
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000" />
+      <meta name="keywords" content={keywords} />
+      <meta name="author" content={author} />
+      <meta name="description" content={description} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:url" content={url} />
+
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <meta
-        name="description"
-        content={`A statically generated blog example using Next.js and ${CMS_NAME}.`}
-      />
-      <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+      <title>{title}</title>
     </Head>
   )
 }
