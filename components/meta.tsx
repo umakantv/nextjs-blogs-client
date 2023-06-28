@@ -55,8 +55,6 @@ export default function Meta({meta}: {meta: any}) {
       <meta property="og:url" content={url} />
 
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
       <title>{title}</title>
     </Head>
   )

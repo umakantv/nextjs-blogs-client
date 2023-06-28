@@ -11,7 +11,7 @@ import PostsContainer from "../../components/posts-container";
 import Intro from "../../components/intro";
 import CoverImage from "../../components/cover-image";
 import Avatar from "../../components/avatar";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 export default function Post({ user, posts, error }) {
   const router = useRouter();
