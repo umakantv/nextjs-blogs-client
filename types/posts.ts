@@ -1,12 +1,12 @@
 
 
 
-type Author = {
+export type Author = {
     name: string,
     image: string,
 }
 
-type Post = {
+export type Post = {
     _id: string;
     title: string;
     content: string;
