@@ -2,22 +2,24 @@ import React, { useState } from "react";
 import { Button, DialogContent, TextField } from "../ui";
 import { AuthApi } from "../../api";
 import { toast } from "react-toastify";
+import UsernameField from "./UsernameField";
 
 export default function RegisterForm({ setFormType }) {
-  const [name, setName] = useState("Umakant Vashishtha");
-  const [email, setEmail] = useState("umakantvashishtha@example.com");
-  const [password, setPassword] = useState("password");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [username, setUsername] = useState("");
 
   const register = () => {
-    AuthApi.registerApi(name, email, password)
-      .then((response) => {
+    AuthApi.registerApi(name, username, email, password)
+      .then(() => {
         setFormType("login");
         toast("Registered successfully", { type: "success" });
       })
       .catch((err) => {
-        console.error(err);
         // Show error notification
-        toast(err?.response?.data?.message || "Something went wrong", {
+        toast(err?.message || "Something went wrong", {
           type: "error",
         });
       });
@@ -26,47 +28,57 @@ export default function RegisterForm({ setFormType }) {
   return (
     <div>
       <DialogContent>
-        <TextField
-          autoFocus
-          margin="dense"
-          id="name"
-          label="Name"
-          type="name"
-          fullWidth
-          variant="outlined"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="email"
-          label="Email Address"
-          type="email"
-          fullWidth
-          variant="outlined"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="password"
-          label="Password"
-          type="password"
-          fullWidth
-          variant="outlined"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <Button
-          variant="contained"
-          style={{ marginTop: 20 }}
-          fullWidth
-          onClick={() => register()}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+
+            register();
+          }}
         >
-          Sign Up
-        </Button>
+          <UsernameField onChange={(username) => setUsername(username)} />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Name"
+            type="name"
+            fullWidth
+            required
+            variant="outlined"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <TextField
+            margin="dense"
+            id="email"
+            label="Email Address"
+            type="email"
+            fullWidth
+            required
+            variant="outlined"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            margin="dense"
+            id="password"
+            label="Password"
+            type="password"
+            fullWidth
+            required
+            variant="outlined"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button
+            variant="contained"
+            style={{ marginTop: 20 }}
+            fullWidth
+            type="submit"
+          >
+            Sign Up
+          </Button>
+        </form>
       </DialogContent>
     </div>
   );

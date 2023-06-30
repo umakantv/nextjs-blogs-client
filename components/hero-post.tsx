@@ -1,7 +1,7 @@
-import Avatar from './avatar'
-import Date from './date'
-import CoverImage from './cover-image'
-import Link from 'next/link'
+import Date from "./date";
+import CoverImage from "./cover-image";
+import Link from "next/link";
+import AccountInfo from "./Auth/AccountInfo";
 
 export default function HeroPost({
   title,
@@ -11,6 +11,7 @@ export default function HeroPost({
   author,
   slug,
 }) {
+  console.log("Hero post Author", author);
   return (
     <section>
       <div className="mb-8 md:mb-16">
@@ -36,9 +37,9 @@ export default function HeroPost({
             className="text-lg leading-relaxed mb-4"
             dangerouslySetInnerHTML={{ __html: excerpt }}
           />
-          <Avatar author={author} />
+          <AccountInfo user={author} />
         </div>
       </div>
     </section>
-  )
+  );
 }

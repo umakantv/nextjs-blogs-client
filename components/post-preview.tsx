@@ -1,7 +1,7 @@
-import Avatar from "./avatar";
 import Date from "./date";
-import CoverImage from "./cover-image";
+// import CoverImage from "./cover-image";
 import Link from "next/link";
+import AccountInfo from "./Auth/AccountInfo";
 
 export default function PostPreview({
   title,
@@ -33,7 +33,7 @@ export default function PostPreview({
           className="text-lg leading-relaxed mb-4"
           dangerouslySetInnerHTML={{ __html: excerpt }}
         />
-        <Avatar author={author} />
+        <AccountInfo user={author} />
       </div>
     </div>
   );

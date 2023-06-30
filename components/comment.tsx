@@ -1,14 +1,12 @@
-import Avatar from "./avatar";
+import AccountInfo from "./Auth/AccountInfo";
 import Date from "./date";
-import styles from './post-body.module.css'
+import styles from "./post-body.module.css";
 
-export default function Comment({
-  comment,
-}) {
+export default function Comment({ comment }) {
   return (
     <div className="mb-12">
       <div className="mb-4">
-        <Avatar author={comment.author} />
+        <AccountInfo user={comment.author} />
         Posted <Date dateString={comment.createdAt} />
       </div>
       <div

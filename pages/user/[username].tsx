@@ -8,7 +8,7 @@ import ErrorPage from "../../components/error-page";
 import { PostApi, UserApi } from "../../api";
 import PostsContainer from "../../components/posts-container";
 import Intro from "../../components/intro";
-import Image from "next/legacy/image";
+import Avatar from "../../components/Auth/Avatar";
 
 export default function Post({ user, posts, error }) {
   const router = useRouter();
@@ -30,13 +30,7 @@ export default function Post({ user, posts, error }) {
               </Head>
               <Container>
                 <div className="text-center md:text-left">
-                  <Image
-                    width={200}
-                    height={200}
-                    src={user.image}
-                    className="rounded-full"
-                    alt={user.username}
-                  />
+                  <Avatar user={user} size={200} />
                 </div>
                 <div>
                   <Intro title={`@ ${user.username}`} />
