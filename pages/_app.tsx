@@ -1,11 +1,13 @@
-import { AppProps } from 'next/app'
-import '../styles/index.css'
+import { AppProps } from "next/app";
+import "../styles/index.css";
+import { AuthContextProvider } from "../context/Auth";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  
-  return <>
-    <Component {...pageProps} />
-  </>
+  return (
+    <AuthContextProvider>
+      <Component {...pageProps} />
+    </AuthContextProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
