@@ -8,8 +8,6 @@ import ErrorPage from "../../components/error-page";
 import { PostApi, UserApi } from "../../api";
 import PostsContainer from "../../components/posts-container";
 import Intro from "../../components/intro";
-// import CoverImage from "../../components/cover-image";
-// import Avatar from "../../components/avatar";
 import Image from "next/legacy/image";
 
 export default function Post({ user, posts, error }) {

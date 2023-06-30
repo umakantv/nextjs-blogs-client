@@ -10,6 +10,7 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import CircularProgress from "@mui/material/CircularProgress";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -30,6 +31,7 @@ export {
   Container,
   Card,
   CardContent,
+  CircularProgress,
   Dialog,
   DialogContent,
   DialogTitle,

@@ -4,7 +4,16 @@ import { toast } from "react-toastify";
 import { User } from "../types/user";
 import axios from "../api/apiTransport";
 
-const AuthContext = React.createContext({
+interface AuthContext {
+  user: null | User;
+  setUser: (user: User) => void;
+  showLoginForm: boolean;
+  setShowLoginForm: (show: boolean) => void;
+  login: (email: string, password: string) => void;
+  logout: () => void;
+}
+
+const AuthContext = React.createContext<AuthContext>({
   user: null,
   setUser: (user: User) => {},
   showLoginForm: false,

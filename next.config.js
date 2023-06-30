@@ -17,6 +17,7 @@ module.exports = {
       "cloudflare-ipfs.com",
       "secure.gravatar.com",
       "loremflickr.com",
+      "avatars.githubusercontent.com",
     ],
   },
 };

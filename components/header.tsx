@@ -70,7 +70,9 @@ export default function Header() {
                   onClose={handleCloseUserMenu}
                 >
                   <MenuItem>
-                    <Typography>{user.name}</Typography>
+                    <Link href={`/user/${user.username}`}>
+                      <Typography>{user.name}</Typography>
+                    </Link>
                   </MenuItem>
                   <MenuItem
                     onClick={() => {

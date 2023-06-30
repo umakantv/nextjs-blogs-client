@@ -15,7 +15,7 @@ export default function LoginForm() {
           autoFocus
           margin="dense"
           id="name"
-          label="Email Address"
+          label="Username or Email Address"
           type="email"
           fullWidth
           variant="outlined"

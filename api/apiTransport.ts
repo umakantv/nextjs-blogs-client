@@ -10,9 +10,8 @@ const axios = Axios.create({
 });
 
 axios.interceptors.response.use(
-  function (value) {
-    // console.log(value.data.data)
-    return value.data.data;
+  function (response) {
+    return response.data.data;
   },
   function (err) {
     console.error(err.response?.status, err.response.data);
