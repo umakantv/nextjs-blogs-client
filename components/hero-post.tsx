@@ -11,7 +11,6 @@ export default function HeroPost({
   author,
   slug,
 }) {
-  console.log("Hero post Author", author);
   return (
     <section>
       <div className="mb-8 md:mb-16">
