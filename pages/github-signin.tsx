@@ -14,8 +14,6 @@ export default function GithubSignin() {
         .then((response: any) => {
           const { token } = response;
           localStorage.setItem("auth-token", token);
-          console.log(JSON.stringify(response, null, 2));
-          alert(token);
           window.location.replace("/");
         })
         .catch((err) => {
