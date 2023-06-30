@@ -37,7 +37,6 @@ export default function RegisterForm({ setFormType }) {
         >
           <UsernameField onChange={(username) => setUsername(username)} />
           <TextField
-            autoFocus
             margin="dense"
             id="name"
             label="Name"

@@ -76,6 +76,7 @@ export default function UsernameField({ onChange }) {
       label="Username"
       type="username"
       fullWidth
+      autoFocus
       required
       variant="outlined"
       value={username}
