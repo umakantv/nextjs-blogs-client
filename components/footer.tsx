@@ -1,4 +1,4 @@
-import Container from './container'
+import { Container } from "./ui";
 
 export default function Footer() {
   return (
@@ -25,5 +25,5 @@ export default function Footer() {
         </div>
       </Container>
     </footer>
-  )
+  );
 }

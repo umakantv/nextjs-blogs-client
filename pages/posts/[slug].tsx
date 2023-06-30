@@ -3,11 +3,10 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Container from "../../components/container";
 import PostBody from "../../components/post-body";
 import MoreStories from "../../components/more-stories";
-import Header from "../../components/header";
 import PostHeader from "../../components/post-header";
 import SectionSeparator from "../../components/section-separator";
 import Layout from "../../components/layout";
-import PostTitle from "../../components/post-title";
+import PageTitle from "../../components/page-title";
 import { CommentApi, PostApi } from "../../api";
 import ErrorPage from "../../components/error-page";
 import Comment from "../../components/comment";
@@ -21,17 +20,18 @@ export default function Post({ post, comments = [], posts, error }) {
   }
 
   return (
-    <Layout meta={{
-      author: post?.author.name,
-      description: post?.excerpt,
-      tags: post?.tags,
-      title: `${post?.title} - ${post?.author.name}`,
-      ogImage: post?.metadata?.ogImage
-    }}>
+    <Layout
+      meta={{
+        author: post?.author.name,
+        description: post?.excerpt,
+        tags: post?.tags,
+        title: `${post?.title} - ${post?.author.name}`,
+        ogImage: post?.metadata?.ogImage,
+      }}
+    >
       <Container>
-        <Header />
         {router.isFallback ? (
-          <PostTitle>Loading...</PostTitle>
+          <PageTitle>Loading...</PageTitle>
         ) : (
           <>
             <article>
@@ -42,13 +42,17 @@ export default function Post({ post, comments = [], posts, error }) {
                 author={post.author}
                 tags={post.tags}
               />
-              
+
               <PostBody content={post.content} />
               <hr className="border-accent-2 mt-10 mb-10" />
-              <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">Comments</h2>
+              <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
+                Comments
+              </h2>
 
               <footer>
-                {comments.map((comment, i) => (<Comment key={i} comment={comment} />))}
+                {comments.map((comment, i) => (
+                  <Comment key={i} comment={comment} />
+                ))}
               </footer>
             </article>
 
@@ -62,11 +66,8 @@ export default function Post({ post, comments = [], posts, error }) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({
-  params,
-}) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
-
     const post: any = await PostApi.getPostById(params.slug as string);
     const comments = await CommentApi.getCommentsByPostId(post._id);
 
@@ -78,22 +79,20 @@ export const getStaticProps: GetStaticProps = async ({
       },
       revalidate: 10,
     };
-  } catch(err) {
-
+  } catch (err) {
     return {
       props: {
         error: {
           status: err.status,
           message: err.message,
-        }
+        },
       },
-      revalidate: 10
-    }
+      revalidate: 10,
+    };
   }
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-
   return {
     paths: [],
     fallback: true,

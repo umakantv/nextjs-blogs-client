@@ -39,8 +39,8 @@ export function AuthContextProvider({ children }) {
 
   const login = (email: string, password: string) => {
     AuthApi.loginApi(email, password)
-      .then((response) => {
-        let { token } = response.data.data;
+      .then((data) => {
+        let { token } = data as any;
         localStorage.setItem("auth-token", token);
         setShowLoginForm(false);
         toast("Logged in successfully", { type: "success" });

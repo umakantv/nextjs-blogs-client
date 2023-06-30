@@ -1,19 +1,13 @@
 import Avatar from "./avatar";
 import Date from "./date";
 import CoverImage from "./cover-image";
-import PostTitle from "./post-title";
+import PageTitle from "./page-title";
 import Tags from "./tags";
 
-export default function PostHeader({
-  title,
-  coverImage,
-  date,
-  author,
-  tags,
-}) {
+export default function PostHeader({ title, coverImage, date, author, tags }) {
   return (
     <>
-      <PostTitle>{title}</PostTitle>
+      <PageTitle>{title}</PageTitle>
       <div className="hidden md:block md:mb-12">
         <Avatar author={author} />
       </div>

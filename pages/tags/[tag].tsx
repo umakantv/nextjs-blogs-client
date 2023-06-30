@@ -2,9 +2,8 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Container from "../../components/container";
-import Header from "../../components/header";
 import Layout from "../../components/layout";
-import PostTitle from "../../components/post-title";
+import PageTitle from "../../components/page-title";
 import ErrorPage from "../../components/error-page";
 import { PostApi } from "../../api";
 import PostsContainer from "../../components/posts-container";
@@ -20,22 +19,18 @@ export default function Post({ tag, posts, error }) {
   return (
     <Layout meta={{ title: tag }}>
       <Container>
-        <Header />
         {router.isFallback ? (
-          <PostTitle>{tag}</PostTitle>
+          <PageTitle>{tag}</PageTitle>
         ) : (
           <>
             <article>
               <Head>
-                <title>
-                  {tag}
-                </title>
-
+                <title>{tag}</title>
               </Head>
               <Container>
                 <Intro title={`# ${tag}`} />
               </Container>
-              
+
               <PostsContainer allPosts={posts} />
             </article>
           </>
@@ -45,12 +40,13 @@ export default function Post({ tag, posts, error }) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({
-  params: {tag},
-}) => {
+export const getStaticProps: GetStaticProps = async ({ params: { tag } }) => {
   try {
-
-    const response: any = await PostApi.getPosts({ tag: tag as string, sortBy: 'commentCount', sortOrder: 'desc' });
+    const response: any = await PostApi.getPosts({
+      tag: tag as string,
+      sortBy: "commentCount",
+      sortOrder: "desc",
+    });
 
     return {
       props: {
@@ -59,22 +55,20 @@ export const getStaticProps: GetStaticProps = async ({
       },
       revalidate: 10,
     };
-  } catch(err) {
-
+  } catch (err) {
     return {
       props: {
         error: {
           status: err.status,
           message: err.message,
-        }
+        },
       },
-      revalidate: 10
-    }
+      revalidate: 10,
+    };
   }
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-
   return {
     paths: [],
     fallback: true,
