@@ -27,7 +27,9 @@ export default function GithubSignin() {
   return (
     <CardContent>
       <CircularProgress />
-      <Typography variant="h1">Logging you in with GitHub</Typography>
+      <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8 mb-8">
+        Logging you in with GitHub
+      </h1>
     </CardContent>
   );
 }
