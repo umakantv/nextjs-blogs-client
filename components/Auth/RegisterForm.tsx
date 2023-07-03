@@ -31,7 +31,6 @@ export default function RegisterForm({ setFormType }) {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-
             register();
           }}
         >
@@ -43,7 +42,6 @@ export default function RegisterForm({ setFormType }) {
             type="name"
             fullWidth
             required
-            variant="outlined"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -54,7 +52,6 @@ export default function RegisterForm({ setFormType }) {
             type="email"
             fullWidth
             required
-            variant="outlined"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -65,7 +62,6 @@ export default function RegisterForm({ setFormType }) {
             type="password"
             fullWidth
             required
-            variant="outlined"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

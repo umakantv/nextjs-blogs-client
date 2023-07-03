@@ -13,6 +13,8 @@ import {
 } from "./ui";
 import AuthContext from "../contexts/Auth";
 import { useContext, useState } from "react";
+import LinkButton from "./ui/LinkButton";
+import ThemeSwitch from "./ui/ThemeSwitch";
 
 export default function Header() {
   const { user, setShowLoginForm, logout } = useContext(AuthContext);
@@ -45,11 +47,13 @@ export default function Header() {
             </Typography>
           </Link>
           <Stack direction="row" spacing={2} alignItems={"center"}>
+            <ThemeSwitch />
             {user ? (
               <>
-                <Link href={`/create`}>
-                  <Button variant="outlined">Create Post</Button>
-                </Link>
+                <LinkButton link="/create" color="primary" variant="outlined">
+                  Create Post
+                </LinkButton>
+                {/* </Link> */}
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar alt={user.name} src={user.image} />
                 </IconButton>

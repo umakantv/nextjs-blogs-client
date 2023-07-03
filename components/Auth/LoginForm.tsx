@@ -11,35 +11,42 @@ export default function LoginForm() {
   return (
     <div>
       <DialogContent>
-        <TextField
-          autoFocus
-          margin="dense"
-          id="name"
-          label="Username or Email Address"
-          type="email"
-          fullWidth
-          variant="outlined"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <TextField
-          margin="dense"
-          id="password"
-          label="Password"
-          type="password"
-          fullWidth
-          variant="outlined"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <Button
-          variant="contained"
-          style={{ marginTop: 20 }}
-          fullWidth
-          onClick={() => login(email, password)}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            login(email, password);
+          }}
         >
-          Login
-        </Button>
+          <TextField
+            required
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Username or Email Address"
+            type="email"
+            fullWidth
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            required
+            margin="dense"
+            id="password"
+            label="Password"
+            type="password"
+            fullWidth
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button
+            variant="contained"
+            style={{ marginTop: 20 }}
+            fullWidth
+            type="submit"
+          >
+            Login
+          </Button>
+        </form>
       </DialogContent>
     </div>
   );

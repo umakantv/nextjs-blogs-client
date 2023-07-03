@@ -9,6 +9,7 @@ import { PostApi, UserApi } from "../../api";
 import PostsContainer from "../../components/posts-container";
 import Intro from "../../components/intro";
 import Avatar from "../../components/Auth/Avatar";
+import { Typography } from "../../components/ui";
 
 export default function Post({ user, posts, error }) {
   const router = useRouter();
@@ -34,6 +35,7 @@ export default function Post({ user, posts, error }) {
                 </div>
                 <div>
                   <Intro title={`@ ${user.username}`} />
+                  <Typography variant="h4">{user?.name}</Typography>
                 </div>
               </Container>
 

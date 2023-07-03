@@ -5,32 +5,24 @@ import {
   IconButton,
   CircularProgress,
 } from "@mui/material";
-import { TextFieldProps, TextFieldVariants } from "@mui/material/TextField";
-// import View from "@material-ui/icons/Visibility";
-// import Hide from "@material-ui/icons/VisibilityOff";
+import { StandardTextFieldProps } from "@mui/material/TextField";
+import { InputProps } from "@mui/material/Input";
+import { Hide, View } from "../icons";
 
-function Hide({ fontSize }) {
-  return <span className="material-symbols-outlined">visibility_off</span>;
+interface CustomTextFieldProps extends StandardTextFieldProps {
+  /**
+   * The variant to use.
+   * @default 'outlined'
+   */
+  // variant?: TextFieldVariants;
+
+  errorMessage?: string;
+  info?: string;
+  otherInputProps?: Partial<InputProps>;
+  tabIndex?: number;
+  success?: boolean;
+  loading?: boolean;
 }
-
-function View({ fontSize }) {
-  return <span className="material-symbols-outlined">visibility</span>;
-}
-
-// type AdditionalProps = {
-//   /**
-//    * The variant to use.
-//    * @default 'outlined'
-//    */
-//   variant?: TextFieldVariants;
-
-//   error: string;
-//   info?: string;
-//   otherInputProps?: any;
-//   tabIndex?: number;
-// };
-
-// type CustomTextFieldProps =  AdditionalProps extends Omit<TextFieldProps, "variant">;
 
 function capitalize(str?: string): string {
   if (!str) return "";
@@ -38,7 +30,7 @@ function capitalize(str?: string): string {
 }
 
 export default function CustomTextField({
-  error,
+  errorMessage,
   success,
   required = false,
   label,
@@ -54,10 +46,10 @@ export default function CustomTextField({
   autoComplete = "on",
   otherInputProps = {},
   ...props
-}: any) {
+}: CustomTextFieldProps) {
   const [visible, setVisible] = useState(false);
 
-  error = capitalize(error);
+  errorMessage = capitalize(errorMessage);
 
   return (
     <>
@@ -65,12 +57,10 @@ export default function CustomTextField({
         fullWidth
         style={{
           marginTop: 15,
-          ...(success == true ? { borderColor: "green" } : {}),
         }}
         label={label}
         variant={variant as any}
-        error={Boolean(error)}
-        success={success}
+        error={Boolean(errorMessage)}
         required={required}
         type={visible ? "text" : type}
         id={id}
@@ -97,10 +87,8 @@ export default function CustomTextField({
         {...props}
       />
       {info && <FormHelperText>{info}</FormHelperText>}
-      {error && (
-        <FormHelperText error={true}>
-          {error.charAt(0).toUpperCase() + error.slice(1)}
-        </FormHelperText>
+      {errorMessage && (
+        <FormHelperText error={true}>{errorMessage}</FormHelperText>
       )}
     </>
   );

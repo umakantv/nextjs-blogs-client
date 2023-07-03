@@ -1,29 +1,55 @@
-import React, { useEffect, useReducer } from "react";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { red, grey, green } from "@mui/material/colors";
-import { CssBaseline, useMediaQuery } from "@mui/material";
+import React, { useEffect, useReducer, useState } from "react";
+import { ThemeProvider, createTheme, Theme } from "@mui/material/styles";
+import { green, amber, deepOrange } from "@mui/material/colors";
+import { CssBaseline } from "@mui/material";
+import useSystemTheme, {
+  ThemeType,
+  getSystemTheme,
+} from "../hooks/useSystemTheme";
 
 const reducer = (state: any, newState: any) => ({ ...state, ...newState });
 
+interface CustomThemeContext {
+  theme: Theme;
+  themeType: ThemeType;
+  switchTheme: (themeType: ThemeType) => void;
+}
+
+const CustomThemeContext = React.createContext<CustomThemeContext>({
+  theme: createTheme(),
+  themeType: getSystemTheme(),
+  switchTheme: (themeType: ThemeType) => {},
+});
+
+export default CustomThemeContext;
+
 export function ThemeContextProvider({ children }) {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  // const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const systemTheme = useSystemTheme();
 
-  let themeType = prefersDarkMode ? "dark" : "light";
+  const [themeType, setThemeType] = useState<ThemeType>(systemTheme);
 
-  const [themeSettings] = useReducer(reducer, {
+  const [themeSettings, dispatch] = useReducer(reducer, {
     palette: {
-      type: themeType,
-      primary: {
-        main: grey[900],
-      },
-      secondary: {
-        main: green[900],
-      },
-      error: {
-        main: red.A400,
-      },
+      mode: themeType,
+      primary: amber,
+      secondary: green,
     },
   });
+
+  useEffect(() => {
+    dispatch({
+      palette: {
+        ...themeSettings.palette,
+        mode: themeType,
+        primary: themeType === "dark" ? amber : deepOrange,
+      },
+    });
+  }, [themeType]);
+
+  useEffect(() => {
+    setThemeType(systemTheme);
+  }, [systemTheme]);
 
   const theme = createTheme({
     ...themeSettings,
@@ -31,14 +57,13 @@ export function ThemeContextProvider({ children }) {
       borderRadius: 0,
     },
     typography: {
+      h1: {
+        fontWeight: "700",
+      },
       fontFamily:
         'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
     },
   });
-
-  theme.typography.h1 = {
-    fontWeight: "700",
-  };
 
   useEffect(() => {
     if (themeType === "dark") {
@@ -49,9 +74,17 @@ export function ThemeContextProvider({ children }) {
   }, [themeType]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      {children}
-    </ThemeProvider>
+    <CustomThemeContext.Provider
+      value={{
+        themeType: themeType as any,
+        theme,
+        switchTheme: setThemeType,
+      }}
+    >
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
+    </CustomThemeContext.Provider>
   );
 }

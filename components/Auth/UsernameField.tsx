@@ -11,9 +11,6 @@ function validateUsername(username: string) {
   if (username.length < 4) return "Username should have at least 4 characters";
 
   if (!usernameRegex.test(username)) return "Invalid characters";
-
-  // if (username.match(/^[_a-z0-9]+$/)) {
-  // }
 }
 
 export default function UsernameField({ onChange }) {
@@ -78,11 +75,10 @@ export default function UsernameField({ onChange }) {
       fullWidth
       autoFocus
       required
-      variant="outlined"
       value={username}
       onChange={(e) => setUsername(e.target.value)}
       info={"Use only alphabets, numbers and _"}
-      error={error}
+      errorMessage={error}
       success={true}
       otherInputProps={{
         endAdornment,
