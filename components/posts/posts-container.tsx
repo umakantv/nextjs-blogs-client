@@ -1,4 +1,4 @@
-import Container from "./container";
+import Container from "../container";
 import HeroPost from "./hero-post";
 import MoreStories from "./more-stories";
 

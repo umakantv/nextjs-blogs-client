@@ -1,6 +1,6 @@
-import AccountInfo from "./Auth/AccountInfo";
-import Date from "./date";
-import styles from "./post-body.module.css";
+import AccountInfo from "../Auth/AccountInfo";
+import Date from "../date";
+import styles from "../posts/post-body.module.css";
 
 export default function Comment({ comment }) {
   return (

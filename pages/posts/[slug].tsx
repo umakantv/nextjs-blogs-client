@@ -1,15 +1,15 @@
 import { useRouter } from "next/router";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Container from "../../components/container";
-import PostBody from "../../components/post-body";
-import MoreStories from "../../components/more-stories";
-import PostHeader from "../../components/post-header";
+import PostBody from "../../components/posts/post-body";
+import MoreStories from "../../components/posts/more-stories";
+import PostHeader from "../../components/posts/post-header";
 import SectionSeparator from "../../components/section-separator";
 import Layout from "../../components/layout";
 import PageTitle from "../../components/page-title";
 import { CommentApi, PostApi } from "../../api";
 import ErrorPage from "../../components/error-page";
-import Comment from "../../components/comment";
+import Comment from "../../components/comments/comment";
 
 export default function Post({ post, comments = [], posts, error }) {
   const router = useRouter();

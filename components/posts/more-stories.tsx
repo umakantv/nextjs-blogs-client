@@ -1,4 +1,4 @@
-import { Post } from "../types/posts";
+import { Post } from "../../types/posts";
 import PostPreview from "./post-preview";
 
 export default function MoreStories({ posts }) {

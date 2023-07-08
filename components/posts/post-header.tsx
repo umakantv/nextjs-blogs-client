@@ -1,8 +1,8 @@
-import Date from "./date";
-import CoverImage from "./cover-image";
-import PageTitle from "./page-title";
-import Tags from "./tags";
-import AccountInfo from "./Auth/AccountInfo";
+import Date from "../date";
+import CoverImage from "../cover-image";
+import PageTitle from "../page-title";
+import Tags from "../tags";
+import AccountInfo from "../Auth/AccountInfo";
 
 export default function PostHeader({ title, coverImage, date, author, tags }) {
   return (

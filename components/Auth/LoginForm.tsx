@@ -23,7 +23,7 @@ export default function LoginForm() {
             margin="dense"
             id="name"
             label="Username or Email Address"
-            type="email"
+            // type="email"
             fullWidth
             value={email}
             onChange={(e) => setEmail(e.target.value)}

@@ -1,7 +1,7 @@
-import Date from "./date";
-import CoverImage from "./cover-image";
+import Date from "../date";
+import CoverImage from "../cover-image";
 import Link from "next/link";
-import AccountInfo from "./Auth/AccountInfo";
+import AccountInfo from "../Auth/AccountInfo";
 
 export default function HeroPost({
   title,
