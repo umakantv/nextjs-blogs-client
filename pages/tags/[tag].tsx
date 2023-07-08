@@ -6,7 +6,7 @@ import Layout from "../../components/layout";
 import PageTitle from "../../components/page-title";
 import ErrorPage from "../../components/error-page";
 import { PostApi } from "../../api";
-import PostsContainer from "../../components/posts-container";
+import PostsContainer from "../../components/posts/posts-container";
 import Intro from "../../components/intro";
 
 export default function Post({ tag, posts, error }) {

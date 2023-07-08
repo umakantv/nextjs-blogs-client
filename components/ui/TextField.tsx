@@ -14,7 +14,7 @@ interface CustomTextFieldProps extends StandardTextFieldProps {
    * The variant to use.
    * @default 'outlined'
    */
-  // variant?: TextFieldVariants;
+  variant?: any;
 
   errorMessage?: string;
   info?: string;

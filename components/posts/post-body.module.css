@@ -7,7 +7,7 @@
 .content ul,
 .content ol,
 .content blockquote {
-  @apply my-6;
+  @apply my-2;
 }
 
 .content a {
@@ -61,11 +61,12 @@
 }
 
 .content blockquote {
-  @apply border-l-4 border-gray-500 bg-gray-200 italic ml-0 py-4 px-6;
+  @apply border-l-4 border-gray-500 bg-gray-200 italic ml-0 px-6;
+  background-color: inherit;
 }
 
 .content blockquote p {
-  @apply mt-0;
+  @apply mt-0 py-2;
 }
 
 .content blockquote cite {

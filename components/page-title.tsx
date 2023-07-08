@@ -1,6 +1,6 @@
 import { Typography } from "./ui";
 
-export default function PostTitle({ children }) {
+export default function PostTitle({ children, ...props }) {
   return (
     <>
       {/* <Typography
@@ -9,7 +9,11 @@ export default function PostTitle({ children }) {
       >
         {children}
       </Typography> */}
-      <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8 mb-8">
+      <h1
+        className="text-6xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8 mb-8"
+        style={{ letterSpacing: "0.03em" }}
+        {...props}
+      >
         {children}
       </h1>
     </>

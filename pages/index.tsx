@@ -23,11 +23,11 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 
     let allPosts = response.records.map((post: Post) => ({
       title: post.title,
-      featuredImage: post.metadata?.coverImage,
+      featuredImage: post.metadata?.coverImage || null,
       createdAt: post.createdAt,
       author: post.author,
       slug: post.slug,
-      excerpt: post.excerpt,
+      excerpt: post.excerpt || null,
     }));
 
     return {

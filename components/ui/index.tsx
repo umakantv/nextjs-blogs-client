@@ -16,6 +16,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogActions from "@mui/material/DialogActions";
 import Divider from "@mui/material/Divider";
+import FormGroup from "@mui/material/FormGroup";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
 import TextField from "./TextField";
 
 export {
@@ -24,6 +26,7 @@ export {
   IconButton,
   Typography,
   Menu,
+  FormGroup,
   Avatar,
   Stack,
   MenuItem,
@@ -38,4 +41,5 @@ export {
   DialogActions,
   Divider,
   TextField,
+  TextareaAutosize,
 };

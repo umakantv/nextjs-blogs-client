@@ -18,3 +18,11 @@ export type Post = {
     ogImage: string;
   };
 };
+
+export type CreatePost = {
+  title: string;
+  content: string;
+  tags: string[];
+
+  isPrivate?: boolean;
+};

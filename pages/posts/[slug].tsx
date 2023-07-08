@@ -10,6 +10,7 @@ import PageTitle from "../../components/page-title";
 import { CommentApi, PostApi } from "../../api";
 import ErrorPage from "../../components/error-page";
 import Comment from "../../components/comments/comment";
+import markdownToHtml from "../../lib/markdown";
 
 export default function Post({ post, comments = [], posts, error }) {
   const router = useRouter();
@@ -70,6 +71,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const post: any = await PostApi.getPostById(params.slug as string);
     const comments = await CommentApi.getCommentsByPostId(post._id);
+
+    post.content = markdownToHtml(post.content || "");
 
     return {
       props: {
