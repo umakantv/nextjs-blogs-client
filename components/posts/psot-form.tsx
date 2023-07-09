@@ -61,7 +61,7 @@ const PostForm = () => {
               required
               autoFocus
               placeholder="Your Post Title Here"
-              className={`text-6xl md:text-6xl font-bold tracking-tighter leading-tight md:pr-8 mb-8 ${style.titleInput}`}
+              className={`text-3xl md:text-6xl font-bold tracking-tighter leading-tight md:pr-8 mb-8 ${style.titleInput}`}
               onChange={(e) => setPost({ ...post, title: e.target.value })}
             />
           </FormGroup>
