@@ -18,6 +18,7 @@ module.exports = {
       "secure.gravatar.com",
       "loremflickr.com",
       "avatars.githubusercontent.com",
+      "*",
     ],
   },
 };

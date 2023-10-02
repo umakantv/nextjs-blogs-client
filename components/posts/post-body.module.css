@@ -73,6 +73,14 @@
   @apply not-italic;
 }
 
+.content blockquote p {
+  word-wrap: break-word;
+}
+
+.content blockquote {
+  border-left: 2px solid #0070f3;
+}
+
 .content audio {
   @apply w-full;
 }
